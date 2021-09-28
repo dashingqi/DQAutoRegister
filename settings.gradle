@@ -1,0 +1,4 @@
+
+rootProject.name = "DQAutoRegister"
+include ':app'
+include ':autoregister'

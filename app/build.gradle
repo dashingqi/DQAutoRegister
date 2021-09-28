@@ -1,0 +1,98 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply plugin: 'com.dashingqi.autoregister'
+autoregister {
+   info getRootDir().absolutePath
+}
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "com.dashingqi.router"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VRESION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BUILD_TIME", "\"${System.currentTimeMillis()}\"")
+            resValue("string", "greeting", "hello")
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField("String", "BUILD_TIME", "\"${System.currentTimeMillis()}\"")
+            resValue("string", "greeting", "hello")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation ANDROIDX_CORE_KTX
+    implementation ANDROIDX_APPCOMPAT
+    implementation GOOGLE_MATERIAL
+    implementation ANDROIDX_CONSTRAINTLAYOUT
+
+    implementation JET_BRAINS_KOTLIN
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        String dependency = details.requested.toString()
+        if (dependency.contains("com.google.android")) {
+            // 抛出异常，终止编译
+            // throw new RuntimeException("不允许使用 $dependency")
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
