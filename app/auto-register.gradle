@@ -1,0 +1,12 @@
+apply plugin: 'com.dashingqi.autoregister'
+autoRegister {
+    registerInfo = [
+            [
+                    "scanInterfaceName"     : "com.dashingqi.autoregister.IInterface",
+                    "codeInsertToClassName" : "com.dashingqi.autoregister.InterfaceManager",
+                    "codeInsertToMethodName": "3",
+                    "registerMethodName"    : "4",
+                    "registerClassName"     : "5"
+            ]
+    ]
+}

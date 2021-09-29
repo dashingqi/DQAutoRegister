@@ -4,10 +4,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-apply plugin: 'com.dashingqi.autoregister'
-autoregister {
-   info getRootDir().absolutePath
-}
+apply from: project.file("auto-register.gradle")
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION
